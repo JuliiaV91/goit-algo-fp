@@ -33,8 +33,7 @@ def draw_tree(tree_root):
     tree = add_edges(tree, tree_root, pos)
 
     colors = [node[1]['color'] for node in tree.nodes(data=True)]
-    labels = {node[0]: node[1]['label'] for node in tree.nodes(data=True)}  # Використовуйте значення вузла для міток
-
+    labels = {node[0]: node[1]['label'] for node in tree.nodes(data=True)}  
     plt.figure(figsize=(8, 5))
     nx.draw(tree, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
     plt.show()
@@ -57,5 +56,5 @@ def heap_visual(heap_array):
     heap_tree_root = heap_tree(heap_array)
     draw_tree(heap_tree_root)
 
-# Створення дерева
+
 heap_visual([5, 25, 8, 1, 3, 29, 40]) 

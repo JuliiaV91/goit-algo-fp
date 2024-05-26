@@ -9,7 +9,7 @@ items = {
 }
 
 def greedy_algorithm (items, budget):
-    # Розрахунок співвідношення калорій до вартості 
+    # співвідношення калорій до вартості 
     ratios = [(item, info['calories'] / info['cost']) for item, info in items.items()]
     
     ratios.sort(key=lambda x: x[1], reverse=True)
@@ -32,10 +32,9 @@ selected_items = greedy_algorithm(items, budget)
 print("Вибрані страви:", selected_items)
 
 def dynamic_programming (items, budget):
-    # Ініціалізуємо список для зберігання максимальної кількості калорій для кожного бюджету
+    # список для зберігання максимальної кількості калорій для кожного бюджету
     max_calories = [0] * (budget + 1)
 
-    # Заповнюємо список max_calories
     for i in range(1, budget + 1):
         for item, info in items.items():
             item_cost = info['cost']
@@ -43,7 +42,6 @@ def dynamic_programming (items, budget):
             if item_cost <= i:
                 max_calories[i] = max(max_calories[i], max_calories[i - item_cost] + item_calories)
 
-    # Відновлюємо вибір предметів, які ми включили
     selected_items = []
     remaining_budget = budget
     for i in range(budget, 0, -1):
